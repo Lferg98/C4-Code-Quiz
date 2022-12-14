@@ -1,24 +1,38 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
 }
 
 /* add new font later */
 body {
     font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
   
 }
 /* fix padding adjust later*/
 header {
     text-align: center;
-    padding-top: 30px;
+    padding: 30px;
+    border: 2px solid grey;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px black ;
+    margin: 40px auto;
+    width:75%;
 }
 
 .card {
     border: 1px solid grey;
+    border-radius: 15px;
     box-shadow: 3px 3px 3px black ;
     margin: 20px auto;
     padding: 30px;
     width: 75%;
+    padding: 30px;
+    text-align: center;
+}
+
+.card p {
+    margin-top: 8px;
 }
