@@ -36,3 +36,37 @@ header {
 .card p {
     margin-top: 8px;
 }
+
+.answer-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.answer-grid-item {
+    display: grid;
+}
+
+.start {
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+    padding: 20px 40px;
+    border: 0;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    outline: 0;
+    font-weight: bold;
+}
+
+#start-btn {
+    width: 200px;  
+    margin-top: 20px;
+    padding: 20px 30px;
+}
