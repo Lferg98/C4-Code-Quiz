@@ -46,12 +46,18 @@ var codeQuiz = [
 var cardEl = document.querySelector("#card");
 var startBtn = document.querySelector("#start-btn");
 var scoreEL = document.querySelector(".score");
+var quizEl = document.querySelector(".quiz-container");
+var endEl
 var questionCounter = 0;
 var currentScore = 99;
 var highScores = [];
 
 
 // start quiz function
+//QUIZ STRUCTURE 
+ //QUIZ QUESTIONS SECTION 
+ //QUIZ ANSWER SELECTIONS SECTION WITH BUTTONS FOR EACH ANSWER SELECTION
+ //QUIZ CORRECT/INCORRECT SECTION
 var quickQuiz = function() {
 
     document.querySelector("#instructions").remove();
@@ -112,11 +118,11 @@ startBtn.addEventListener("click", createQuiz)
 //ON CLICK OF START BUTTON, TIMER STARTS AND FIRST QUESTION IS DISPLAYED
 
 var scoreCounter = function() {
-    scoreEL.textContent = "Current Score: 100";
+    scoreEl.textContent = "Current Score: 100";
 
     var scoreInterval = setInterval(function() {
         if (currentScore > 0 && questionCounter < quickQuiz.length) {
-            scoreEL.textContent = "Current Score: " + currentScore;
+            scoreEl.textContent = "Current Score: " + currentScore;
             currentScore--;
         }
         else {
@@ -128,16 +134,45 @@ var scoreCounter = function() {
 
 
 
+// add startquiz & endquiz functions
+
+var createQuiz = function() {
+    document.querySelector("#instructions").remove();
+    quizEl.classList.remove("hide");
+
+}
+
+
+var endQuiz = function() {
+    quizEl.remove();
+    scoreEl.remove();
+    
+    endEl.innerHTML = "<h2 class='end-title'>It's all over ! Well Done !</h2><p>Your final score is " + currentScore + ".  Please enter your name.</p>";
+
+    var scoreForm = document.createElement("form");
+    scoreForm.id = "score-form";
+    endEl.appendChild(scoreForm);
+
+    var nameInput = document.createElement("input");
+    nameInput.className = "name-input";
+    nameInput.setAttribute("type", "text");
+    nameInput.setAttribute("name", "player-name");
+    nameInput.setAttribute("placeholder", "ENTER YOUR NAME");
+    scoreForm.appendChild(nameInput);
+
+    var nameBtn = document.createElement("button");
+    nameBtn.className = "btn";
+    nameBtn.id = "name-btn"
+    nameBtn.textContent = "SUBMIT";
+    scoreForm.appendChild(nameBtn);
+
+    nameBtn.addEventListener("click", saveScore);
+}
+
+
+
+
 /*
-
-
--
-
-- QUIZ STRUCTURE 
-- QUIZ QUESTIONS SECTION 
-- QUIZ ANSWER SELECTIONS SECTION WITH BUTTONS FOR EACH ANSWER SELECTION
-- QUIZ CORRECT/INCORRECT SECTION
-
 - ADD TIMER FUNCTION 
 - DEDUCT POINTS FOR INCORRECT ANSWERS
 
