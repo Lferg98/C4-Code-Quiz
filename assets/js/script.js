@@ -45,9 +45,14 @@ var codeQuiz = [
 
 var cardEl = document.querySelector("#card");
 var startBtn = document.querySelector("#start-btn");
+var scoreEL = document.querySelector(".score");
+var questionCounter = 0;
+var currentScore = 99;
+var highScores = [];
+
 
 // start quiz function
-var createQuiz = function() {
+var quickQuiz = function() {
 
     document.querySelector("#instructions").remove();
 
@@ -104,11 +109,29 @@ var createQuiz = function() {
 
 startBtn.addEventListener("click", createQuiz)
 
+//ON CLICK OF START BUTTON, TIMER STARTS AND FIRST QUESTION IS DISPLAYED
+
+var scoreCounter = function() {
+    scoreEL.textContent = "Current Score: 100";
+
+    var scoreInterval = setInterval(function() {
+        if (currentScore > 0 && questionCounter < quickQuiz.length) {
+            scoreEL.textContent = "Current Score: " + currentScore;
+            currentScore--;
+        }
+        else {
+            clearInterval(scoreInterval);
+            // add end quiz function 
+        }
+    }, 1000);
+}
+
+
+
 /*
 
-- ARRAY OF QUESTIONS AND ANSWER SELECTIONS
-- ARRAY OF CORRECT ANSWERS
-- ON CLICK OF START BUTTON, TIMER STARTS AND FIRST QUESTION IS DISPLAYED
+
+-
 
 - QUIZ STRUCTURE 
 - QUIZ QUESTIONS SECTION 
