@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* add new font later */
+body {
+    font-family: 'Open Sans', sans-serif;
+  
+}
+/* fix padding adjust later*/
+header {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.card {
+    border: 1px solid grey;
+    box-shadow: 3px 3px 3px black ;
+    margin: 20px auto;
+    padding: 30px;
+    width: 75%;
+}
