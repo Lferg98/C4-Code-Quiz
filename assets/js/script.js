@@ -2,52 +2,53 @@
 
 var codeQuiz = [
     {
-        question: 'Test question 1', 
-        a: 'Answer 1A',
-        b: 'Answer 1B',
-        c: 'Answer 1C',
-        d: 'Answer 1D',
-        correctAns: 'Answer 1B'
+        question: 'Inside which HTML element do we put the JavaScript?',
+        a: '<js>',
+        b: '<javascript>',
+        c: '<script>',
+        d: '<scripting>',
+        correctAns: 'b'
     }, 
     {
-        question: 'Test question 2',
-        a: 'Answer 2A',
-        b: 'Answer 2B',
-        c: 'Answer 2C',
-        d: 'Answer 2D',
-        correctAns: 'Answer 2C'
+        question: 'Which of the following is not a way to wrtie a function in JavaScript?',
+        a: 'let myFunc = function() { ... };',
+        b: 'const myFunc = () => { ... };',
+        c: 'var myFunc() = function { ... };',
+        d: 'function myFunc() { ... };',
+        correctAns: 'c'
     },
     {
-        question: 'Test question 3',
-        a: 'Answer 3A',
-        b: 'Answer 3B',
-        c: 'Answer 3C',
-        d: 'Answer 3D',
-        correctAns: 'Answer 3C'
+        question: 'What is the correct JavaScript syntax to change the content of the HTML element below?',
+        a: '#demo.innerHTML = "Hello World!";',
+        b: 'document.getElement("p").innerHTML = "Hello World!";',
+        c: 'document.getElementById("demo").innerHTML = "Hello World!";  ',
+        d: 'document.getElementByName("p").innerHTML = "Hello World!";',
+        correctAns: 'c'
     },
     {
-        question: 'Test question 4',
-        a: 'Answer 4A',
-        b: 'Answer 4B',
-        c: 'Answer 4C',
-        d: 'Answer 4D',
-        correctAns: 'Answer 4D'
+        question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+        a: 'if i <> 5  ',
+        b: 'if (i != 5) ',
+        c: 'if (i <> 5)',
+        d: 'if i =! 5 then',
+        correctAns: 'b'
     },
     {
-        question: 'Test question 5',
-        a: 'Answer 5A',
-        b: 'Answer 5B',
-        c: 'Answer 5C',
-        d: 'Answer 5D',
-        correctAns: 'Answer 5B'
+        question: 'What type of data is "56"?',
+        a: 'undefined',
+        b: 'number',
+        c: 'boolean',
+        d: 'string',
+        correctAns: 'd'
     }
 ]
 
+var background = document.querySelector("body");
 var cardEl = document.querySelector("#card");
 var startBtn = document.querySelector("#start-btn");
 var scoreEL = document.querySelector(".score");
 var quizEl = document.querySelector(".quiz-container");
-var endEl
+var endEl = document.querySelector(".end");
 var questionCounter = 0;
 var currentScore = 99;
 var highScores = [];
@@ -113,7 +114,72 @@ var quickQuiz = function() {
     choiceD.appendChild(btnD);
 }
 
+
+
 startBtn.addEventListener("click", createQuiz)
+
+
+
+// add button event listeners/iteration for each question
+
+var nextQuestion = function(index) {
+    var questionHeader = document.querySelector(".question-header");
+    var questionEl = document.querySelector(".question");
+    var btnA = document.querySelector("#btn-a");
+    var btnB = document.querySelector("#btn-b");
+    var btnC = document.querySelector("#btn-c");
+    var btnD = document.querySelector("#btn-d");
+
+    questionHeader.textContent = "Question #" + parseInt(index + 1)
+    questionEl.textContent = codeQuiz[index].question;
+    btnA.textContent = codeQuiz[index].a;
+    btnB.textContent = codeQuiz[index].b;
+    btnC.textContent = codeQuiz[index].c;
+    btnD.textContent = codeQuiz[index].d;
+
+    btnA.addEventListener("click", checkAnswer);
+    btnB.addEventListener("click", checkAnswer);
+    btnC.addEventListener("click", checkAnswer);
+    btnD.addEventListener("click", checkAnswer);
+}
+
+var checkAnswer = function(event) {
+    var clickedBtn = event.target.getAttribute("value");
+    var feedbackEl = document.querySelector(".feedback");
+    feedbackEl.classList.remove("hide");
+    
+    // checks button value against correct answer in array
+    if (clickedBtn === codeQuiz[questionCounter].answer) {
+        background.className = "correct";
+        feedbackEl.textContent = "CORRECT!"
+    }
+    else {
+        if (currentScore >= 5) {
+            currentScore -= 5;
+            scoreEl.textContent = "Current score: " + currentScore;
+            }
+        background.className = "incorrect";
+        feedbackEl.classList.remove("hide");
+        feedbackEl.textContent = "INCORRECT!"
+    }
+
+    questionCounter++
+
+    if (questionCounter < codeQuiz.length) {        
+        nextQues(questionCounter);
+    }
+    else {
+        endQuiz();
+    }
+}
+
+
+
+
+
+
+
+
 
 //ON CLICK OF START BUTTON, TIMER STARTS AND FIRST QUESTION IS DISPLAYED
 
@@ -172,17 +238,15 @@ var endQuiz = function() {
 
 
 
-/*
-- ADD TIMER FUNCTION 
-- DEDUCT POINTS FOR INCORRECT ANSWERS
 
-- ADD LOCAL STORAGE FUNCTION TO SAVE HIGH SCORES
-- ADD OPTION TO TO ENTER NAME AND SAVE HIGH SCORES
+//ADD TIMER FUNCTION 
+//DEDUCT POINTS FOR INCORRECT ANSWERS
 
-- CREATE A HIGH SCORE LIST PAGE
-- ADD OPTION TO CLEAR HIGH SCORES
+//ADD LOCAL STORAGE FUNCTION TO SAVE HIGH SCORES
+//ADD OPTION TO TO ENTER NAME AND SAVE HIGH SCORES
 
-- FINE TUNE STYLE ELEMENTS AND ADDITIONAL FEATURES
-- ADD HOVER EFFECTS TO BUTTONS
+//CREATE A HIGH SCORE LIST PAGE
+//ADD OPTION TO CLEAR HIGH SCORES
 
-*/
+ //FINE TUNE STYLE ELEMENTS AND ADDITIONAL FEATURES
+//ADD HOVER EFFECTS TO BUTTONS
