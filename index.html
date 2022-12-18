@@ -3,38 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Code Quiz</title>
+    <title>JavaScript Code Quiz</title>
     <link href="./assets/css/style.css" rel="stylesheet">
-    <!--ADD A COOL FONT-->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>JavaScript Code Quiz</h1>
-        <!-- add link to score board -->
-        <!-- add timer -->
     </header>
-    
     <main class="card" id="card">
-        <!-- (CONTAINER) ADD CARD WITH WELCOME TEXT AND READY. START PROMPTS. INSTRUCTIONS HEADING-->
-        
         <section class="instructions" id="instructions">
-                <h2>Instructions</h2>
-                <p>Welcome to my JavaScript Quick Code Quiz! This is a limited multiple choice quiz that will test your knowledge on everything JavaScript.
-                    Incorrect answers will deduct time from the clock. Try to beat your high score!. Good luck and have fun!</p>
-                </p>
-                <p>
-                    Press the START button to begin the quiz!
-                </p>
-            
-                <div class="start" id="start">
+            <h2>Instructions</h2>
+            <p>
+                Welcome to my JavaScript Quick Code Quiz! This is a limited time multiple choice quiz that will test your knowledge on everything JavaScript.
+                Incorrect answers will deduct time from the clock. Try to beat your high score!. Good luck and have fun!
+            </p>
+            <p>
+                Ready?  Press the START button to begin!
+            </p>
+            <div class="start">
                 <button class="btn" id="start-btn">START</button>
             </div>
         </section>
-        <div class="instructions-hide" ></div>
-        <section class="quiz-container">
+        <div class="feedback hide"></div>
+        <section class="quiz-container hide">
             <h2 class="question-header"></h2>
             <div class="question"></div>
-            <div class="answer-grid">
+            <div class="answer-grid ">
                 <div class="answer-grid-item">
                     <button class="btn" id="btn-a" value="a"></button>
                 </div>
@@ -49,17 +44,15 @@
                 </div>
             </div>
         </section>
-        <div class="end"></div>
+        <section class="end">
+        </section>
     </main>
-
-   
-    <!--(CONTAINER) ADD FOOTER CONTAINER HIGH SCORE TAB WHICH DIRECTS AND ADD TIMER IN THE SAME CONTAINER-->
     <footer>
-        <div class="score-container">
-          <div class="'high-score">
-            <!--link highscores html (href ./highscore.html) eg-->
-          </div>
-          <div class="score"></div>
+        <div class="scores-container">
+            <div class="high-score">
+                <a href="./highscore.html">View High Scores</a>
+            </div>
+            <div class="score"></div>
         </div>
     </footer>
     <script src="./assets/js/script.js"></script>
