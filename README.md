@@ -1,4 +1,4 @@
-# JavaScript Code Quiz - MODULE 4 HOMEWORK
+## JavaScript Code Quiz - MODULE 4 HOMEWORK
 
 ##Introduction
 
